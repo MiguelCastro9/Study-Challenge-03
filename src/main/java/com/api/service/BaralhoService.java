@@ -76,11 +76,10 @@ public class BaralhoService {
         valorCartas.put("KING", valor_king);
 
         int maiorSoma = 0;
-        JogadorModel jogadorGanhador = null;
+        List<JogadorModel> jogadoresEmpate = new ArrayList<>();
 
         for (JogadorModel jogador : jogadorModel) {
-            int soma = 0;
-            soma = jogador.getValue().stream()
+            int soma = jogador.getValue().stream()
                     .filter(valor -> valor instanceof String)
                     .map(valor -> (String) valor)
                     .mapToInt(stringValor -> {
@@ -102,17 +101,27 @@ public class BaralhoService {
 
             if (soma > maiorSoma) {
                 maiorSoma = soma;
-                jogadorGanhador = jogador;
+                jogadoresEmpate.clear(); // Limpa a lista.
+                jogadoresEmpate.add(jogador);
+            } else if (soma == maiorSoma) {
+                jogadoresEmpate.add(jogador);
             }
         }
 
-        // Verificando a ganhador com a maior somatória. 
-        JogadorModel jogadorGanhadorFinal = jogadorGanhador;
-        jogadorModel.forEach(jogador -> {
-            String status = (jogador == jogadorGanhadorFinal) ? "GANHOU :)" : "PERDEU :(";
-            jogador.setStatus(status);
-        });
-
+        // Verificando se houve empate.
+        if (jogadoresEmpate.size() > 1) {
+            // Empate
+            for (JogadorModel jogador : jogadorModel) {
+                jogador.setStatus("EMPATE :/");
+            }
+        } else {
+            // Verificando o ganhador com a maior somatória.
+            JogadorModel jogadorGanhadorFinal = jogadoresEmpate.get(0);
+            for (JogadorModel jogador : jogadorModel) {
+                String status = (jogador == jogadorGanhadorFinal) ? "GANHOU :)" : "PERDEU :(";
+                jogador.setStatus(status);
+            }
+        }
         return jogadorModel;
     }
 }
