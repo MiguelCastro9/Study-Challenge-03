@@ -55,9 +55,4 @@ public class JogadorModel {
     public void setTotal(Integer total) {
         this.total = total;
     }
-
-    @Override
-    public String toString() {
-        return "JogadorModel{" + "deck_id=" + deck_id + ", value=" + value + ", total=" + total + ", status=" + status + '}';
-    }
 }

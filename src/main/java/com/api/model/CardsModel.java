@@ -55,11 +55,4 @@ public class CardsModel {
     public void setSuit(String suit) {
         this.suit = suit;
     }
-
-    @Override
-    public String toString() {
-        return "CardsModel{" + "code=" + code + ", image=" + image + ", value=" + value + ", suit=" + suit + '}';
-    }
-    
-    
 }
