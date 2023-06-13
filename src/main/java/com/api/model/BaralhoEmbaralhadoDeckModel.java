@@ -4,7 +4,7 @@ package com.api.model;
  *
  * @author Miguel Castro
  */
-public class BaralhoEmbaralhadoDeck {
+public class BaralhoEmbaralhadoDeckModel {
 
     private String success;
 
@@ -14,10 +14,10 @@ public class BaralhoEmbaralhadoDeck {
 
     private String shuffled;
 
-    public BaralhoEmbaralhadoDeck() {
+    public BaralhoEmbaralhadoDeckModel() {
     }
 
-    public BaralhoEmbaralhadoDeck(String success, String deck_id, String remaining, String shuffled) {
+    public BaralhoEmbaralhadoDeckModel(String success, String deck_id, String remaining, String shuffled) {
         this.success = success;
         this.deck_id = deck_id;
         this.remaining = remaining;
