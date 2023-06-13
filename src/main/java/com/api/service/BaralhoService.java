@@ -18,17 +18,22 @@ public class BaralhoService {
 
     @Value("${baralho.embaralhado.deck.carta}")
     private String baralho_embaralhado_deck_carta;
+    
+    @Value("${total.carta}")
+    private Integer total_carta;
 
+    // Criando e embaralhando o baralho.
     public BaralhoEmbaralhadoDeckModel apiBaralhoEmbaralhadoDeck() {
         RestTemplate template = new RestTemplate();
         BaralhoEmbaralhadoDeckModel baralhoEmbaralhadoDeckModel = template.getForObject(baralho_embaralhado_deck, BaralhoEmbaralhadoDeckModel.class);
         return baralhoEmbaralhadoDeckModel;
     }
 
+    // Separando o baralho em decks com cinco cartas.
     public BaralhoEmbaralhadoDeckCartaModel apiBaralhoEmbaralhadoDeckCarta(String deckId) {
         RestTemplate template = new RestTemplate();
         String urlDeckId = baralho_embaralhado_deck_carta.concat(deckId);
-        String url = urlDeckId.concat("/draw/?count=5");
+        String url = urlDeckId.concat("/draw/?count=" + total_carta);
         BaralhoEmbaralhadoDeckCartaModel baralhoEmbaralhadoDeckCartaModel = template.getForObject(url, BaralhoEmbaralhadoDeckCartaModel.class);
         return baralhoEmbaralhadoDeckCartaModel;
     }

@@ -57,4 +57,11 @@ public class BaralhoEmbaralhadoDeckCartaModel {
     public void setRemaining(String remaining) {
         this.remaining = remaining;
     }
+
+    @Override
+    public String toString() {
+        return "BaralhoEmbaralhadoDeckCartaModel{" + "success=" + success + ", deck_id=" + deck_id + ", cards=" + cards + ", remaining=" + remaining + '}';
+    }
+    
+    
 }
