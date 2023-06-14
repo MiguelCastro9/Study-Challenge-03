@@ -3,6 +3,7 @@
 The challenge is to create a deck (using the API available at the end of the file) and assemble four “hands” with 5 cards each, checking which “hand” has the highest sum. If there is a tie, return all players on the screen.
 
 Rules:
+<br>
 ACE = 1
 <br>
 KING = 13
