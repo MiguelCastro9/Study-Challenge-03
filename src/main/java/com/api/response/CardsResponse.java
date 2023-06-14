@@ -1,10 +1,10 @@
-package com.api.model;
+package com.api.response;
 
 /**
  *
  * @author Miguel Castro
  */
-public class CardsModel {
+public class CardsResponse {
 
     private String code;
 
@@ -14,10 +14,10 @@ public class CardsModel {
 
     private String suit;
 
-    public CardsModel() {
+    public CardsResponse() {
     }
 
-    public CardsModel(String code, String image, String value, String suit) {
+    public CardsResponse(String code, String image, String value, String suit) {
         this.code = code;
         this.image = image;
         this.value = value;

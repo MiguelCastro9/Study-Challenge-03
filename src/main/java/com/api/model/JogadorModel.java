@@ -1,19 +1,32 @@
 package com.api.model;
 
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Transient;
 
 /**
  *
  * @author Miguel Castro
  */
+@Entity
 public class JogadorModel {
+
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String deck_id;
 
+    @Transient
     private List<String> value;
-    
+
     private Integer total;
-    
+
     private String status;
 
     public JogadorModel() {
@@ -24,6 +37,14 @@ public class JogadorModel {
         this.value = value;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
     public String getDeck_id() {
         return deck_id;
     }

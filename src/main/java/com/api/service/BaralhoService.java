@@ -1,10 +1,11 @@
 package com.api.service;
 
 import com.api.client.BaralhoClient;
-import com.api.model.BaralhoEmbaralhadoDeckCartaModel;
-import com.api.model.BaralhoEmbaralhadoDeckModel;
-import com.api.model.CardsModel;
+import com.api.response.BaralhoEmbaralhadoDeckCartaResponse;
+import com.api.response.BaralhoEmbaralhadoDeckResponse;
+import com.api.response.CardsResponse;
 import com.api.model.JogadorModel;
+import com.api.repository.JogadorRepository;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -22,6 +23,9 @@ public class BaralhoService {
 
     @Autowired
     private BaralhoClient baralhoService;
+    
+    @Autowired
+    private JogadorRepository jogadorRepository;
 
     @Value("${total.maos}")
     private Integer total_maos;
@@ -40,22 +44,22 @@ public class BaralhoService {
 
     public List<JogadorModel> startGame() {
 
-        List<BaralhoEmbaralhadoDeckModel> baralhoEmbaralhadoDeckModel = new ArrayList<>();
-        List<BaralhoEmbaralhadoDeckCartaModel> baralhoEmbaralhadoDeckCartaModel = new ArrayList<>();
+        List<BaralhoEmbaralhadoDeckResponse> baralhoEmbaralhadoDeckResponse = new ArrayList<>();
+        List<BaralhoEmbaralhadoDeckCartaResponse> baralhoEmbaralhadoDeckCartaResponse = new ArrayList<>();
         List<JogadorModel> jogadorModel = new ArrayList<>();
 
         // Adicionando decks embaralhados em quatro mãos com cinco cartas cada uma. 
         for (int i = 0; i < total_maos; i++) {
-            baralhoEmbaralhadoDeckModel.add(baralhoService.apiBaralhoEmbaralhadoDeck());
-            baralhoEmbaralhadoDeckCartaModel.add(baralhoService.apiBaralhoEmbaralhadoDeckCarta(baralhoEmbaralhadoDeckModel.get(i).getDeck_id()));
+            baralhoEmbaralhadoDeckResponse.add(baralhoService.apiBaralhoEmbaralhadoDeck());
+            baralhoEmbaralhadoDeckCartaResponse.add(baralhoService.apiBaralhoEmbaralhadoDeckCarta(baralhoEmbaralhadoDeckResponse.get(i).getDeck_id()));
         }
 
         // Recuperando o ID do deck e os valores das cartas e adicionando no HashMap.
         Map<String, List<String>> deckIdValues = new HashMap<>();
-        for (int i = 0; i < baralhoEmbaralhadoDeckCartaModel.size(); i++) {
-            String deckId = baralhoEmbaralhadoDeckCartaModel.get(i).getDeck_id();
+        for (int i = 0; i < baralhoEmbaralhadoDeckCartaResponse.size(); i++) {
+            String deckId = baralhoEmbaralhadoDeckCartaResponse.get(i).getDeck_id();
             List<String> values = deckIdValues.getOrDefault(deckId, new ArrayList<>());
-            for (CardsModel card : baralhoEmbaralhadoDeckCartaModel.get(i).getCards()) {
+            for (CardsResponse card : baralhoEmbaralhadoDeckCartaResponse.get(i).getCards()) {
                 values.add(card.getValue());
             }
             deckIdValues.put(deckId, values);
@@ -122,6 +126,11 @@ public class BaralhoService {
                 jogador.setStatus(status);
             }
         }
+        
+        for (int i = 0; i < jogadorModel.size(); i++) {
+            jogadorRepository.save(jogadorModel.get(i));
+        }
+        
         return jogadorModel;
     }
 }

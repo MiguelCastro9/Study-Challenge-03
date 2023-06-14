@@ -1,10 +1,10 @@
-package com.api.model;
+package com.api.response;
 
 /**
  *
  * @author Miguel Castro
  */
-public class BaralhoEmbaralhadoDeckModel {
+public class BaralhoEmbaralhadoDeckResponse {
 
     private String success;
 
@@ -14,10 +14,10 @@ public class BaralhoEmbaralhadoDeckModel {
 
     private String shuffled;
 
-    public BaralhoEmbaralhadoDeckModel() {
+    public BaralhoEmbaralhadoDeckResponse() {
     }
 
-    public BaralhoEmbaralhadoDeckModel(String success, String deck_id, String remaining, String shuffled) {
+    public BaralhoEmbaralhadoDeckResponse(String success, String deck_id, String remaining, String shuffled) {
         this.success = success;
         this.deck_id = deck_id;
         this.remaining = remaining;

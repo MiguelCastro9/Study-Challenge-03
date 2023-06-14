@@ -1,4 +1,4 @@
-package com.api.model;
+package com.api.response;
 
 import java.util.List;
 
@@ -6,20 +6,20 @@ import java.util.List;
  *
  * @author Miguel Castro
  */
-public class BaralhoEmbaralhadoDeckCartaModel {
+public class BaralhoEmbaralhadoDeckCartaResponse {
 
     private String success;
 
     private String deck_id;
 
-    private List<CardsModel> cards;
+    private List<CardsResponse> cards;
 
     private String remaining;
 
-    public BaralhoEmbaralhadoDeckCartaModel() {
+    public BaralhoEmbaralhadoDeckCartaResponse() {
     }
 
-    public BaralhoEmbaralhadoDeckCartaModel(String success, String deck_id, List<CardsModel> cards, String remaining) {
+    public BaralhoEmbaralhadoDeckCartaResponse(String success, String deck_id, List<CardsResponse> cards, String remaining) {
         this.success = success;
         this.deck_id = deck_id;
         this.cards = cards;
@@ -42,11 +42,11 @@ public class BaralhoEmbaralhadoDeckCartaModel {
         this.deck_id = deck_id;
     }
 
-    public List<CardsModel> getCards() {
+    public List<CardsResponse> getCards() {
         return cards;
     }
 
-    public void setCards(List<CardsModel> cards) {
+    public void setCards(List<CardsResponse> cards) {
         this.cards = cards;
     }
 

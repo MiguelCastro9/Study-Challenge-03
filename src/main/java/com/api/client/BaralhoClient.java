@@ -1,7 +1,7 @@
 package com.api.client;
 
-import com.api.model.BaralhoEmbaralhadoDeckCartaModel;
-import com.api.model.BaralhoEmbaralhadoDeckModel;
+import com.api.response.BaralhoEmbaralhadoDeckCartaResponse;
+import com.api.response.BaralhoEmbaralhadoDeckResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -23,18 +23,18 @@ public class BaralhoClient {
     private Integer total_carta;
 
     // Criando e embaralhando o baralho.
-    public BaralhoEmbaralhadoDeckModel apiBaralhoEmbaralhadoDeck() {
+    public BaralhoEmbaralhadoDeckResponse apiBaralhoEmbaralhadoDeck() {
         RestTemplate template = new RestTemplate();
-        BaralhoEmbaralhadoDeckModel baralhoEmbaralhadoDeckModel = template.getForObject(baralho_embaralhado_deck, BaralhoEmbaralhadoDeckModel.class);
-        return baralhoEmbaralhadoDeckModel;
+        BaralhoEmbaralhadoDeckResponse baralhoEmbaralhadoDeckResponse = template.getForObject(baralho_embaralhado_deck, BaralhoEmbaralhadoDeckResponse.class);
+        return baralhoEmbaralhadoDeckResponse;
     }
 
     // Separando o baralho em decks com cinco cartas.
-    public BaralhoEmbaralhadoDeckCartaModel apiBaralhoEmbaralhadoDeckCarta(String deckId) {
+    public BaralhoEmbaralhadoDeckCartaResponse apiBaralhoEmbaralhadoDeckCarta(String deckId) {
         RestTemplate template = new RestTemplate();
         String urlDeckId = baralho_embaralhado_deck_carta.concat(deckId);
         String url = urlDeckId.concat("/draw/?count=" + total_carta);
-        BaralhoEmbaralhadoDeckCartaModel baralhoEmbaralhadoDeckCartaModel = template.getForObject(url, BaralhoEmbaralhadoDeckCartaModel.class);
-        return baralhoEmbaralhadoDeckCartaModel;
+        BaralhoEmbaralhadoDeckCartaResponse baralhoEmbaralhadoDeckCartaResponse = template.getForObject(url, BaralhoEmbaralhadoDeckCartaResponse.class);
+        return baralhoEmbaralhadoDeckCartaResponse;
     }
 }
