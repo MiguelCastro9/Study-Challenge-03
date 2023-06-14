@@ -1,11 +1,13 @@
 package com.api.response;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.List;
 
 /**
  *
  * @author Miguel Castro
  */
+@Schema(name = "Baralho Embaralhado Deck Carta - response")
 public class BaralhoEmbaralhadoDeckCartaResponse {
 
     private String success;

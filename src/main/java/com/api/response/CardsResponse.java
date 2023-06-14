@@ -1,9 +1,12 @@
 package com.api.response;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 /**
  *
  * @author Miguel Castro
  */
+@Schema(name = "Cartas - response")
 public class CardsResponse {
 
     private String code;
