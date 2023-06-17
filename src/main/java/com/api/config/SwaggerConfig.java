@@ -18,6 +18,7 @@ public class SwaggerConfig {
         return new OpenAPI()
                 .info(new Info()
                         .title("API Deck Of Cards")
-                        .version("v1"));
+                        .version("v1")
+                        .description("Study Challenge 03"));
     }
 }
