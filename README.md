@@ -47,10 +47,12 @@ and while the application is running, just access the link http://localhost:8080
 
 ## Demo
 
-![image](https://github.com/MiguelCastro9/CardsAPI/assets/56695817/04caf34c-70b5-46d1-a885-b95177b3219b)
+![image](https://github.com/MiguelCastro9/Study-Challenge-03/assets/56695817/b8a4c807-93b1-4bf4-9025-a758bfa7e5a5)
 
-![image](https://github.com/MiguelCastro9/CardsAPI/assets/56695817/ea8d9d54-74f0-4c34-bb04-83ebd47b9947)
+![image](https://github.com/MiguelCastro9/Study-Challenge-03/assets/56695817/b5dfd26b-581a-45cb-977e-c5d14ee4a019)
 
-![image](https://github.com/MiguelCastro9/CardsAPI/assets/56695817/5e764437-b72a-4d65-b335-ad3fb1bfd0c8)
+
+
+
 
 
